@@ -7,19 +7,20 @@
 
   <style>
     :root{
-      --cream:#f3eee8;
-      --soft:#e3efe9;
-      --mint:#cfe9df;
-      --mint-mid:#8fdbc0;
-      --mint-strong:#59d6a7;
-      --green:#3caf87;
-      --green-dark:#23785c;
-      --text:#1f1b1a;
-      --muted:#5f5a58;
-      --card:#f7f4ef;
-      --line:rgba(31,27,26,0.08);
-      --shadow:0 18px 40px rgba(0,0,0,0.12);
-      --radius:30px;
+      --bg:#120203;
+      --cherry:#5d0d12;
+      --cherry-dark:#2a0508;
+      --wine:#3b080c;
+      --wine-soft:#6d1820;
+      --rose:#e8d7d1;
+      --soft:#f6ece7;
+      --card:rgba(255,255,255,0.06);
+      --card-strong:rgba(255,255,255,0.08);
+      --text:#fff8f5;
+      --muted:#d8c3bc;
+      --line:rgba(255,255,255,0.12);
+      --shadow:0 20px 60px rgba(0,0,0,0.35);
+      --radius:28px;
     }
 
     *{
@@ -34,10 +35,11 @@
 
     body{
       font-family: Arial, Helvetica, sans-serif;
-      color:var(--text);
       background:
-        radial-gradient(circle at top left, rgba(89,214,167,0.24), transparent 28%),
-        linear-gradient(180deg, #f4efe8 0%, #edf5f1 42%, #dff1ea 100%);
+        radial-gradient(circle at top left, rgba(138,18,30,0.42), transparent 35%),
+        radial-gradient(circle at top right, rgba(118,15,24,0.22), transparent 30%),
+        linear-gradient(180deg, #4a0a10 0%, #220407 42%, #120203 100%);
+      color:var(--text);
       overflow-x:hidden;
     }
 
@@ -53,7 +55,7 @@
 
     .display{
       font-family: Georgia, "Times New Roman", serif;
-      letter-spacing:0.03em;
+      letter-spacing:0.04em;
     }
 
     .page{
@@ -67,14 +69,15 @@
       justify-content:space-between;
       align-items:center;
       gap:20px;
-      margin-bottom:30px;
+      margin-bottom:28px;
     }
 
     .brand{
       font-size:0.95rem;
-      letter-spacing:0.18em;
       text-transform:uppercase;
+      letter-spacing:0.18em;
       font-weight:700;
+      color:var(--text);
     }
 
     .nav{
@@ -85,51 +88,57 @@
 
     .nav a{
       font-size:0.9rem;
-      padding-bottom:4px;
-      border-bottom:1px solid rgba(31,27,26,0.18);
-      transition:0.25s ease;
       text-transform:uppercase;
       letter-spacing:0.12em;
+      padding-bottom:4px;
+      border-bottom:1px solid rgba(255,255,255,0.2);
+      transition:0.25s ease;
+      color:var(--text);
     }
 
     .nav a:hover{
-      color:var(--green-dark);
-      border-color:var(--green-dark);
+      opacity:1;
+      border-color:rgba(255,255,255,0.55);
+      transform:translateY(-1px);
     }
 
     .hero{
-      min-height:78vh;
+      min-height:84vh;
       display:grid;
-      grid-template-columns:1.05fr 0.95fr;
-      gap:28px;
+      grid-template-columns:1.02fr 0.98fr;
+      gap:30px;
       align-items:center;
       margin-bottom:34px;
+      position:relative;
     }
 
     .hero-copy{
-      padding:20px 0;
+      position:relative;
+      z-index:2;
     }
 
     .eyebrow{
       font-size:0.84rem;
       letter-spacing:0.24em;
       text-transform:uppercase;
-      color:var(--green-dark);
+      color:var(--muted);
       margin-bottom:14px;
       font-weight:700;
     }
 
     .hero h1{
-      font-size:clamp(3rem, 7vw, 6.2rem);
-      line-height:0.95;
+      font-size:clamp(3rem, 7vw, 6rem);
+      line-height:0.93;
       margin-bottom:18px;
+      color:var(--text);
+      text-transform:uppercase;
     }
 
     .hero p{
-      font-size:1.02rem;
-      line-height:1.9;
-      color:var(--muted);
       max-width:620px;
+      color:var(--muted);
+      line-height:1.9;
+      font-size:1rem;
       margin-bottom:24px;
     }
 
@@ -143,21 +152,23 @@
       display:inline-block;
       padding:14px 22px;
       border-radius:999px;
-      font-size:0.92rem;
-      letter-spacing:0.1em;
+      font-size:0.9rem;
       text-transform:uppercase;
+      letter-spacing:0.12em;
       transition:0.25s ease;
       box-shadow:var(--shadow);
     }
 
     .button.primary{
-      background:linear-gradient(90deg, var(--mint-strong), var(--green));
-      color:white;
+      background:linear-gradient(90deg, var(--wine-soft), var(--cherry));
+      color:#fff;
+      border:1px solid rgba(255,255,255,0.08);
     }
 
     .button.secondary{
-      background:rgba(255,255,255,0.65);
-      border:1px solid rgba(31,27,26,0.08);
+      background:rgba(255,255,255,0.06);
+      color:#fff;
+      border:1px solid rgba(255,255,255,0.12);
     }
 
     .button:hover{
@@ -172,44 +183,47 @@
       justify-content:center;
     }
 
-    .hero-blob{
+    .hero-panel{
       position:absolute;
-      inset:20px 0 20px 40px;
-      background:linear-gradient(180deg, #d9efe7 0%, #bfe8d8 100%);
-      border-radius:40px 120px 40px 120px;
+      inset:16px 0 16px 34px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:42px;
       z-index:1;
+      box-shadow:var(--shadow);
     }
 
     .phone-stack{
       position:relative;
       z-index:2;
-      width:min(470px, 100%);
+      width:min(480px, 100%);
       display:grid;
       place-items:center;
     }
 
     .phone-main{
       width:62%;
-      border-radius:34px;
-      box-shadow:0 20px 38px rgba(0,0,0,0.16);
+      border-radius:30px;
+      box-shadow:0 20px 40px rgba(0,0,0,0.28);
     }
 
     .phone-small{
       position:absolute;
-      width:41%;
-      border-radius:28px;
-      box-shadow:0 16px 32px rgba(0,0,0,0.14);
+      width:40%;
+      border-radius:26px;
+      box-shadow:0 16px 34px rgba(0,0,0,0.24);
     }
 
     .phone-small.left{
       left:0;
-      bottom:55px;
+      bottom:58px;
       transform:rotate(-7deg);
     }
 
     .phone-small.right{
       right:0;
-      top:55px;
+      top:54px;
       transform:rotate(7deg);
     }
 
@@ -219,9 +233,8 @@
     }
 
     .section-card{
-      background:rgba(255,255,255,0.62);
-      backdrop-filter:blur(6px);
-      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border:1px solid rgba(255,255,255,0.1);
       border-radius:var(--radius);
       padding:34px;
       box-shadow:var(--shadow);
@@ -231,13 +244,15 @@
       font-size:clamp(2rem, 5vw, 3.5rem);
       margin-bottom:18px;
       line-height:0.95;
+      text-transform:uppercase;
+      color:var(--text);
     }
 
     .section-text{
       color:var(--muted);
       line-height:1.9;
       font-size:1rem;
-      max-width:900px;
+      max-width:920px;
     }
 
     .two-col{
@@ -247,22 +262,26 @@
     }
 
     .mini-card{
-      background:rgba(255,255,255,0.72);
-      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+      border:1px solid rgba(255,255,255,0.1);
       border-radius:24px;
       padding:24px;
       box-shadow:var(--shadow);
     }
 
     .mini-card h3{
-      font-size:1.2rem;
+      font-size:1.18rem;
       margin-bottom:10px;
+      color:var(--text);
+      text-transform:uppercase;
+      letter-spacing:0.03em;
     }
 
     .mini-card p,
     .mini-card li{
       color:var(--muted);
       line-height:1.8;
+      font-size:0.98rem;
     }
 
     .mini-card ul{
@@ -278,10 +297,10 @@
     }
 
     .process-step{
-      background:linear-gradient(180deg, rgba(255,255,255,0.82), rgba(217,239,231,0.82));
+      background:linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
       border-radius:24px;
       padding:22px 20px;
-      border:1px solid var(--line);
+      border:1px solid rgba(255,255,255,0.1);
       box-shadow:var(--shadow);
     }
 
@@ -289,7 +308,7 @@
       width:42px;
       height:42px;
       border-radius:50%;
-      background:linear-gradient(180deg, var(--mint-strong), var(--green));
+      background:linear-gradient(180deg, var(--wine-soft), var(--cherry));
       color:#fff;
       display:flex;
       align-items:center;
@@ -300,14 +319,17 @@
     }
 
     .process-step h4{
-      font-size:1.05rem;
+      font-size:1.02rem;
       margin-bottom:10px;
+      color:var(--text);
+      text-transform:uppercase;
+      letter-spacing:0.03em;
     }
 
     .process-step p{
       color:var(--muted);
       line-height:1.75;
-      font-size:0.96rem;
+      font-size:0.95rem;
     }
 
     .feature-grid{
@@ -318,23 +340,25 @@
     }
 
     .feature-card{
-      background:linear-gradient(180deg, #f7f4ef, #e3efe9);
+      background:linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
       border-radius:24px;
       padding:24px;
-      border:1px solid var(--line);
+      border:1px solid rgba(255,255,255,0.1);
       box-shadow:var(--shadow);
     }
 
     .feature-card h4{
-      font-size:1.08rem;
+      font-size:1.05rem;
       margin-bottom:8px;
-      color:var(--green-dark);
+      color:var(--rose);
+      text-transform:uppercase;
+      letter-spacing:0.03em;
     }
 
     .feature-card p{
       color:var(--muted);
       line-height:1.8;
-      font-size:0.96rem;
+      font-size:0.95rem;
     }
 
     .gallery-grid{
@@ -345,10 +369,10 @@
     }
 
     .gallery-item{
-      background:rgba(255,255,255,0.7);
+      background:rgba(255,255,255,0.06);
       border-radius:28px;
       overflow:hidden;
-      border:1px solid var(--line);
+      border:1px solid rgba(255,255,255,0.1);
       box-shadow:var(--shadow);
     }
 
@@ -363,16 +387,17 @@
       color:var(--muted);
       line-height:1.7;
       font-size:0.95rem;
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
     }
 
     .reflection{
-      background:linear-gradient(135deg, rgba(89,214,167,0.16), rgba(255,255,255,0.78));
+      background:linear-gradient(135deg, rgba(109,24,32,0.26), rgba(255,255,255,0.04));
     }
 
     .footer-note{
       text-align:center;
       margin-top:26px;
-      color:var(--muted);
+      color:rgba(255,255,255,0.6);
       font-size:0.9rem;
       letter-spacing:0.1em;
       text-transform:uppercase;
@@ -424,6 +449,10 @@
         min-height:420px;
       }
 
+      .hero-panel{
+        inset:10px 0 10px 0;
+      }
+
       .phone-main{
         width:68%;
       }
@@ -453,10 +482,10 @@
         <div class="eyebrow">UX / App Design / Figma</div>
         <h1 class="display">BudgetBunny</h1>
         <p>
-          BudgetBunny is a student-focused budgeting app concept I created to make money management
-          feel less overwhelming and more approachable. The app was designed to help students keep
-          track of spending, build saving habits, view rewards, and access helpful financial tools
-          in a way that feels simple, friendly, and motivating.
+          BudgetBunny is a student-focused budgeting app concept I created to make managing money
+          feel less intimidating and more visually engaging. I designed the app around the idea that
+          budgeting should feel approachable, motivating, and easy to return to, especially for
+          students balancing spending, savings, and everyday financial decisions.
         </p>
 
         <div class="hero-buttons">
@@ -466,11 +495,11 @@
       </div>
 
       <div class="hero-visual">
-        <div class="hero-blob"></div>
+        <div class="hero-panel"></div>
         <div class="phone-stack">
-          <img src="Screenshot 2026-03-18 at 6.42.01 PM.png" alt="BudgetBunny spending screen" class="phone-main">
-          <img src="Screenshot 2026-03-18 at 6.41.28 PM.png" alt="BudgetBunny welcome screen" class="phone-small left">
-          <img src="Screenshot 2026-03-18 at 6.42.49 PM.png" alt="BudgetBunny account screen" class="phone-small right">
+          <img src="main.png" alt="BudgetBunny main screen" class="phone-main">
+          <img src="9.png" alt="BudgetBunny welcome screen" class="phone-small left">
+          <img src="12.png" alt="BudgetBunny account screen" class="phone-small right">
         </div>
       </div>
     </section>
@@ -478,13 +507,13 @@
     <section class="section" id="overview">
       <div class="section-card">
         <div class="eyebrow">Project Overview</div>
-        <h2 class="section-title display">An app concept designed for student budgeting.</h2>
+        <h2 class="section-title display">A budgeting app concept made for student life.</h2>
         <p class="section-text">
-          For this project, I designed BudgetBunny as a mobile app concept that helps students stay
-          aware of their spending while also making financial goals feel more visual and rewarding.
-          I wanted the experience to feel inviting rather than stressful, so I focused on soft
-          colours, rounded shapes, simple navigation, and playful reward-based features. The goal
-          was to create something practical, but also encouraging and easy to return to regularly.
+          For this project, I created BudgetBunny as a mobile app concept focused on helping students
+          track spending, build saving habits, and feel more in control of their finances. I wanted
+          the experience to feel polished and welcoming rather than stressful, so I combined clear
+          information hierarchy with playful branding, simple navigation, and reward-based features.
+          The result is an app concept that feels practical, visual, and encouraging to use.
         </p>
       </div>
     </section>
@@ -494,21 +523,20 @@
         <div class="mini-card">
           <h3>What I Did</h3>
           <p>
-            I developed the app concept, planned the screen flow, created wireframes, explored the
-            visual direction, and built the interface in Figma. I also thought through the user
-            journey, layout hierarchy, icon use, and how to make the design feel cohesive across
-            multiple screens.
+            I developed the concept, planned the structure, created wireframes in Figma, and designed
+            the final screens. I thought through how the app would look, how a student user would move
+            through it, and how to make the interface feel consistent across different pages.
           </p>
         </div>
 
         <div class="mini-card">
           <h3>Tools + Focus</h3>
           <ul>
-            <li>Figma for wireframing and UI design</li>
-            <li>User-focused app planning</li>
-            <li>Screen hierarchy and navigation</li>
-            <li>Branding through colour, icons, and tone</li>
-            <li>Designing a more engaging budgeting experience</li>
+            <li>Figma for wireframing and interface design</li>
+            <li>UX thinking and screen hierarchy</li>
+            <li>Student-centered app planning</li>
+            <li>Visual branding and UI consistency</li>
+            <li>Designing a more approachable budgeting experience</li>
           </ul>
         </div>
       </div>
@@ -517,38 +545,38 @@
     <section class="section" id="process">
       <div class="section-card">
         <div class="eyebrow">My Process</div>
-        <h2 class="section-title display">From idea to interface.</h2>
+        <h2 class="section-title display">From concept to final screens.</h2>
         <p class="section-text">
-          I approached this project step by step, starting with the idea of creating a budgeting app
-          that would feel less intimidating for students. From there, I worked through structure,
-          screen planning, visual identity, and final interface refinement.
+          I worked through this project in stages, starting with the problem I wanted to solve and
+          then building out the structure, visuals, and app flow. I used Figma to create wireframes
+          first, then moved into styling and refining the interface so it felt cohesive and user-friendly.
         </p>
 
         <div class="process-grid">
           <div class="process-step">
             <div class="step-number">1</div>
-            <h4>Concept Development</h4>
+            <h4>Idea</h4>
             <p>
-              I started by defining the app’s purpose: helping students manage spending, savings,
-              and rewards in one friendly place.
+              I began with the idea of making a budgeting app for students that would feel supportive,
+              clear, and visually engaging instead of overwhelming.
             </p>
           </div>
 
           <div class="process-step">
             <div class="step-number">2</div>
-            <h4>Wireframing</h4>
+            <h4>Wireframes</h4>
             <p>
-              I created wireframes in Figma to map out the structure of the app, including the
-              welcome screen, home page, goals section, and account page.
+              I created wireframes in Figma to map out the app’s main screens, including onboarding,
+              dashboard, goals, and account features.
             </p>
           </div>
 
           <div class="process-step">
             <div class="step-number">3</div>
-            <h4>Visual Design</h4>
+            <h4>UI Design</h4>
             <p>
-              I built out the final screens using a mint-green palette, soft shadows, rounded cards,
-              and playful bunny-themed visuals to make the design feel calm and approachable.
+              I designed the final interface with rounded cards, clear icons, consistent layouts,
+              and a branded visual system that makes the app feel polished and memorable.
             </p>
           </div>
 
@@ -556,8 +584,8 @@
             <div class="step-number">4</div>
             <h4>Refinement</h4>
             <p>
-              I refined spacing, hierarchy, consistency, and icon usage so that the screens felt
-              cohesive and easy to navigate as a complete app system.
+              I refined spacing, hierarchy, colour consistency, and navigation so the screens worked
+              together as one complete and cohesive app concept.
             </p>
           </div>
         </div>
@@ -566,55 +594,55 @@
 
     <section class="section">
       <div class="section-card">
-        <div class="eyebrow">Key Features</div>
-        <h2 class="section-title display">What the app includes.</h2>
+        <div class="eyebrow">Features</div>
+        <h2 class="section-title display">What BudgetBunny includes.</h2>
 
         <div class="feature-grid">
           <div class="feature-card">
-            <h4>Spending Tracking</h4>
+            <h4>Spending Dashboard</h4>
             <p>
-              A home screen focused on showing current monthly spending in a bold, easy-to-read way
-              so users can quickly understand where they stand.
+              A main dashboard shows users their monthly total in a bold, easy-to-understand way so
+              they can quickly see their current spending.
             </p>
           </div>
 
           <div class="feature-card">
             <h4>Weekly Goals</h4>
             <p>
-              Progress bars help turn budgeting into smaller goals, which makes saving and spending
-              habits feel more manageable and motivating.
+              Progress tracking helps make budgeting feel more manageable by breaking it into smaller,
+              more motivating goals.
             </p>
           </div>
 
           <div class="feature-card">
             <h4>Rewards + Streaks</h4>
             <p>
-              Visual rewards and streak systems make the experience feel more interactive and
-              encouraging, especially for student users who benefit from positive reinforcement.
+              Reward icons and streak systems encourage consistent habits and add a more interactive,
+              positive feeling to the experience.
             </p>
           </div>
 
           <div class="feature-card">
             <h4>Student Resources</h4>
             <p>
-              The interface includes quick access to practical student-focused areas such as OSAP,
-              scholarships, discounts, flights, and information.
+              The app includes sections for things like OSAP, scholarships, discounts, flights, and
+              other helpful student finance-related resources.
             </p>
           </div>
 
           <div class="feature-card">
-            <h4>Personal Profile</h4>
+            <h4>Profile Area</h4>
             <p>
-              A profile section lets users view account details, achievements, and status while
-              keeping the design consistent with the rest of the app.
+              A profile page gives users access to account information, badges, and status details in
+              the same visual style as the rest of the app.
             </p>
           </div>
 
           <div class="feature-card">
-            <h4>Friendly Visual Identity</h4>
+            <h4>Friendly UX</h4>
             <p>
-              The bunny imagery, soft palette, and rounded UI were designed to make a finance app
-              feel less harsh and more welcoming.
+              I wanted the app to feel approachable, clean, and visually soft so that money management
+              would feel less stressful for the user.
             </p>
           </div>
         </div>
@@ -628,38 +656,38 @@
 
         <div class="gallery-grid">
           <div class="gallery-item">
-            <img src="Screenshot 2026-03-18 at 6.41.28 PM.png" alt="BudgetBunny welcome screen">
+            <img src="9.png" alt="BudgetBunny welcome screen">
             <div class="gallery-caption">
               <strong>Welcome Screen</strong><br>
-              The landing screen introduces the app with a friendly illustration, clear entry
-              points, and a calm student-focused tone.
+              The opening screen introduces the app with a friendly visual, a soft interface, and
+              clear sign-in options that make the experience feel simple from the start.
             </div>
           </div>
 
           <div class="gallery-item">
-            <img src="Screenshot 2026-03-18 at 6.42.01 PM.png" alt="BudgetBunny spending screen">
+            <img src="main.png" alt="BudgetBunny spending screen">
             <div class="gallery-caption">
               <strong>Spending Dashboard</strong><br>
-              This screen highlights the user’s monthly spending total and includes quick access to
-              support categories like OSAP, scholarships, and goals.
+              This screen presents the user’s spending total and gives quick access to categories like
+              scholarships, discounts, flights, info, and goals.
             </div>
           </div>
 
           <div class="gallery-item">
-            <img src="Screenshot 2026-03-18 at 6.42.26 PM.png" alt="BudgetBunny goals and rewards screen">
+            <img src="11.png" alt="BudgetBunny goals screen">
             <div class="gallery-caption">
               <strong>Goals + Rewards</strong><br>
-              A progress-focused screen showing weekly goals, saving streaks, and rewards to keep
-              the experience motivating and visually engaging.
+              A visual progress page showing weekly goals, saving streaks, and rewards to make the
+              budgeting experience feel more motivating and interactive.
             </div>
           </div>
 
           <div class="gallery-item">
-            <img src="Screenshot 2026-03-18 at 6.42.49 PM.png" alt="BudgetBunny account screen">
+            <img src="12.png" alt="BudgetBunny account screen">
             <div class="gallery-caption">
               <strong>Account Screen</strong><br>
-              The profile page brings together personal information, status, and earned badges while
-              maintaining the same soft and cohesive interface language.
+              The profile page brings together account details, user achievements, and personal
+              information in a layout that stays consistent with the rest of the app.
             </div>
           </div>
         </div>
@@ -669,21 +697,20 @@
     <section class="section" id="reflection">
       <div class="section-card reflection">
         <div class="eyebrow">Reflection</div>
-        <h2 class="section-title display">What I learned from designing BudgetBunny.</h2>
+        <h2 class="section-title display">What I learned from this project.</h2>
         <p class="section-text">
-          This project helped me think more deeply about how visual design can change the emotional
-          experience of an app. Since budgeting can feel stressful, I wanted to design something
-          that felt calm, motivating, and easy to use. Through creating the wireframes in Figma and
-          developing the final interface, I learned how important consistency is across screens,
-          especially with spacing, icons, colour, and hierarchy.
+          BudgetBunny helped me think more carefully about how visual design shapes the emotional
+          experience of an app. Since budgeting can often feel stressful, I wanted to create an
+          interface that felt calm, supportive, and rewarding instead. Through designing the app in
+          Figma, I learned more about how important consistency is across screens, especially with
+          layout, hierarchy, colour, and icon use.
         </p>
         <br>
         <p class="section-text">
-          I also learned how much small design choices matter when building trust and usability.
-          Features like progress tracking, rewards, and simplified navigation made the concept feel
-          more engaging and student-friendly. Overall, BudgetBunny reflects my interest in UX, app
-          design, and creating digital experiences that feel polished, supportive, and visually
-          memorable.
+          This project also helped me develop my skills in wireframing and thinking through user flow.
+          I had to consider both function and feeling: how the app should work, but also how it should
+          make the user feel. Overall, BudgetBunny reflects my interest in UX, branding, and creating
+          digital experiences that are polished, memorable, and user-centered.
         </p>
       </div>
     </section>
