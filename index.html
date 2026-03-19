@@ -68,8 +68,16 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:20px;
+      gap:24px;
       margin-bottom:28px;
+      flex-wrap:wrap;
+    }
+
+    .nav-group{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
     }
 
     .brand{
@@ -80,13 +88,7 @@
       color:var(--text);
     }
 
-    .nav{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-
-    .nav a{
+    .nav-group a{
       font-size:0.9rem;
       text-transform:uppercase;
       letter-spacing:0.12em;
@@ -96,7 +98,7 @@
       color:var(--text);
     }
 
-    .nav a:hover{
+    .nav-group a:hover{
       opacity:1;
       border-color:rgba(255,255,255,0.55);
       transform:translateY(-1px);
@@ -139,40 +141,7 @@
       color:var(--muted);
       line-height:1.9;
       font-size:1rem;
-      margin-bottom:24px;
-    }
-
-    .hero-buttons{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-
-    .button{
-      display:inline-block;
-      padding:14px 22px;
-      border-radius:999px;
-      font-size:0.9rem;
-      text-transform:uppercase;
-      letter-spacing:0.12em;
-      transition:0.25s ease;
-      box-shadow:var(--shadow);
-    }
-
-    .button.primary{
-      background:linear-gradient(90deg, var(--wine-soft), var(--cherry));
-      color:#fff;
-      border:1px solid rgba(255,255,255,0.08);
-    }
-
-    .button.secondary{
-      background:rgba(255,255,255,0.06);
-      color:#fff;
-      border:1px solid rgba(255,255,255,0.12);
-    }
-
-    .button:hover{
-      transform:translateY(-2px);
+      margin-bottom:0;
     }
 
     .hero-visual{
@@ -186,8 +155,7 @@
     .hero-panel{
       position:absolute;
       inset:16px 0 16px 34px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
       border:1px solid rgba(255,255,255,0.08);
       border-radius:42px;
       z-index:1;
@@ -230,6 +198,7 @@
     .section{
       margin-top:30px;
       margin-bottom:34px;
+      scroll-margin-top:36px;
     }
 
     .section-card{
@@ -429,15 +398,17 @@
       }
     }
 
+    @media (max-width: 760px){
+      .topbar{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
     @media (max-width: 640px){
       .page{
         width:min(94vw, 1000px);
         padding-top:22px;
-      }
-
-      .topbar{
-        flex-direction:column;
-        align-items:flex-start;
       }
 
       .section-card,
@@ -467,9 +438,13 @@
   <main class="page">
 
     <header class="topbar">
-      <div class="brand">Scarlett Sandy</div>
-      <nav class="nav">
-        <a href="index.html">Home</a>
+      <div class="nav-group">
+        <div class="brand">Scarlett Sandy</div>
+        <a href="https://scrlettsandy.github.io/portflio/">Home</a>
+        <a href="https://scrlettsandy.github.io/prodjectpage/">Projects</a>
+      </div>
+
+      <nav class="nav-group">
         <a href="#overview">Overview</a>
         <a href="#process">Process</a>
         <a href="#gallery">Screens</a>
@@ -487,11 +462,6 @@
           budgeting should feel approachable, motivating, and easy to return to, especially for
           students balancing spending, savings, and everyday financial decisions.
         </p>
-
-        <div class="hero-buttons">
-          <a href="#overview" class="button primary">Explore Project</a>
-          <a href="#gallery" class="button secondary">View Screens</a>
-        </div>
       </div>
 
       <div class="hero-visual">
@@ -702,7 +672,7 @@
           BudgetBunny helped me think more carefully about how visual design shapes the emotional
           experience of an app. Since budgeting can often feel stressful, I wanted to create an
           interface that felt calm, supportive, and rewarding instead. Through designing the app in
-          Figma, I learned more about how importnt consistency is across screens, especially with
+          Figma, I learned more about how important consistency is across screens, especially with
           layout, hierarchy, colour, and icon use.
         </p>
         <br>
